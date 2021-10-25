@@ -12,5 +12,5 @@ The underlying principle is that context becomes easier to understand as you und
 ## Process
 - Translate text A to text B using translation API.
 - Individually translate each word in A to B. [wordreference style API providing all meanings]
+	- The only valid translations will be those which already exist (at least synonymously) in B.
 - Create a map of words from A to B from those individual translations.
-
