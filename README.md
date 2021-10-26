@@ -9,14 +9,18 @@ The underlying principle is that context becomes easier to understand as you und
 ## Example
 Given this text in Persian,
 
+```
 توانا بود هرکه دانا بود
+```
 
 We want to be able to define a % of the text to translate, and also be able to translate specific words after at ease.
 
 For a persian-english translation at a 5% assistance level, the program might output:
 
+```
 توانا بود هرکه دانا بود
 بود knowledge توانا بود هرکه
+```
 
 We can determine the order by which words should be translated by checking their bucket position in a frequency list. The less common the bucket, the earlier the word is translated.
 
