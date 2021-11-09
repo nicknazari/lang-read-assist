@@ -1,17 +1,13 @@
-from translate import Translator
+import translators as ts
 import sys
 
-# sys.argv[1] can be language
-# sys.argv[2] can be document to translate
-# sys.argv[3] can be optional argument for percent of document to translate. default is 100
-
+# language codes
+# english = en
 # persian = fa
 # spanish = es
 
 def translate(text, nativelang, targetlang):
-	translator = Translator(provider="libre", from_lang=nativelang, to_lang=targetlang)
-	translation = translator.translate(text)
-	return translation
+	return ts.google(text, nativelang, targetlang)
 
 # need to write wrapper for wordreference api to get all possible translations of a word
 def get_translations(word):
@@ -19,10 +15,14 @@ def get_translations(word):
 	# wordreference api call, append to translations each possibility
 	return translations
 
-nativelang = sys.argv[1] # native language code
-targetlang = sys.argv[2] # target language code
+filename = sys.argv[1]		# name of file
+nativelang = sys.argv[2] 	# native language code
+targetlang = sys.argv[3] 	# target language code
+percent = sys.argv[4]		# percent of file to translate
+# ie main.py mobydick_persian.txt fa en 20
+# will give you top 20% of difficult words in mobydick_persian.txt translated to english
 
-with open(sys.argv[3], 'r') as f:
+with open(filename, 'r') as f:
 	text = f.read()
 
 print(translate(text, nativelang, targetlang))
